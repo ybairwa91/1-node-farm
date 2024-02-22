@@ -183,3 +183,16 @@ server.listen("8000", "127.0.0.1", () => {
 //app.js
 
 //Buidling our own modules
+//
+
+///////////
+//nodepackagemanager[npm]
+//command line interface app that automatically comes included nodejs and retrieve to use and manage open sources app
+//npm
+
+///type of package and installation
+//1.simple depencies and
+//2.developement depencies
+
+//1.simple or regular package depencies are basically nothing but npm basic approach towards
+//2.development dependencies are
