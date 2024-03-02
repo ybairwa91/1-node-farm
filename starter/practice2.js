@@ -151,32 +151,54 @@ console.log(q.search);
 console.log(q.query);
 console.log(q.query.month);
 console.log(q.query.year);
-*/
 
 http
-  .createServer((req, res) => {
+.createServer((req, res) => {
     console.log(req.url);
     const q = url.parse(req.url, true);
     const pathname = q.pathname;
     const query = q.query;
     console.log(pathname, query);
-
+    
     if (pathname == '/winter') {
       fs.readFile('./winter.html', 'utf-8', (err, data) => {
         res.writeHead(200, {
           'content-type': 'text/html',
         });
         res.end(data);
-      });
+    });
     } else if (pathname == '/summer') {
       fs.readFile('./summer.html', 'utf-8', (err, data) => {
-        res.writeHead(200, {
+          res.writeHead(200, {
           'content-type': 'text/html',
         });
         res.end(data);
       });
     } else {
-      res.end('hi');
+        res.end('hi');
     }
   })
   .listen(8000);
+
+  
+  http
+  .createServer((req, res) => {
+    const q = url.parse(req.url, true);
+    const filename = './' + q.pathname + '.html';
+    fs.readFile(filename, 'utf-8', (err, data) => {
+      if (err) {
+        res.writeHead(404, {
+          'content-type': 'text/html',
+        });
+        return res.end('404:response not found');
+      }
+      res.writeHead(200, {
+        'content-type': 'text/html',
+      });
+      res.write(data);
+      return res.end();
+    });
+  })
+  .listen(8000);
+
+      */
